@@ -1,0 +1,82 @@
+= Social Network Demo Server
+
+This is the companion web server for the Codename One social network app demo from the August 11, 2015 Webinar.
+
+See the client project https://github.com/shannah/social-network[here].
+
+== License
+
+The MIT License (MIT)
+
+Copyright (c) 2015 Codename One
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in
+all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+THE SOFTWARE.
+
+== Requirements
+
+. PHP 5.3 or Higher
+. MySQL 5 or higher
+
+== Installation
+
+=== 1 Install files
+
+Copy this application onto your web server.  The following are instructions using GIT through shell on your server.
+
+-----
+$ git clone https://github.com/shannah/social-network-server.git
+$ cd social-network-server
+$ ant
+$ cp conf.ini-sample conf.ini
+-----
+
+The last call to `ant` will clone Xataface into the `xataface` subdirectory.
+
+=== 2 Create MySQL Database
+
+Create an empty MySQL database, and create a user for the database with full permissions granted.
+
+=== 3 Update conf.ini file
+
+Modify the settings in the `conf.ini` file to match the information for the database you created in step 2.  You should only need to modify the `[_database]` section.
+
+-----
+[_database]
+  host=localhost
+  name=<database name>
+  user=<mysql_username>
+  password=<mysql_user_password>
+-----
+
+=== 4 Point Browser to index.php file
+
+If everything worked correctly, you'll just receive a message saying "The application is installed correctly"
+
+
+== Setting the Client Project to Use This Server
+
+The `SocialClient` class has a hard-coded static member variable `URL` defined thusly:
+
+[source,java]
+-----
+private static String URL = "http://localhost/social_network";
+-----
+
+Change the URL to point to your application.
+
