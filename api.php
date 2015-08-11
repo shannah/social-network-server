@@ -305,7 +305,7 @@ function post($token=null, $comment, $uploaded_image_path) {
     $imagesDir = 'uploads/'.sha1($user);
     @mkdir($imagesDir);
     
-    $filename = time().basename($uploaded_image_path);
+    $filename = time().basename($uploaded_image_path).'.png';
     if (!move_uploaded_file($uploaded_image_path, $imagesDir.'/'.$filename)){
       $error_message = "Failed to upload file";
       return false;
@@ -439,7 +439,7 @@ function get_post_photo_url($o) {
   if (!$o->photo) {
     return null;
   }
-  return df_absolute_url('uploads/'.sha1($o->username).'/'.rawurlencode(basename($o->photo)));
+  return df_absolute_url('uploads/'.sha1($o->username).'/'.rawurlencode(basename($o->photo.'.png')));
 }
 
 
