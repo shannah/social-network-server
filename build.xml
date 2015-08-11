@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project name="SocialNetwork" default="install" basedir=".">
+  <target name="check-xataface">
+    <available file="xataface" type="dir" property="xataface.present"/>
+  </target>
+  <target name="install" depends="check-xataface" if="!xataface.present">
+    <exec executable="git" failonerror="true">
+      <arg value="clone"/>
+      <arg value="https://github.com/shannah/xataface.git"/>
+      <arg value="xataface"/>
+    </exec>
+    <mkdir dir="templates_c"/>
+    <chmod dir="templates_c" perm="0777"/>
+    <mkdir dir="uploads"/>
+    <chmod dir="uploads" perm="0777"/>
+  </target>
+  <target name="clean">
+    <delete dir="templates_c"/>
+    <delete dir="xataface"/>
+  </target>
+</project>

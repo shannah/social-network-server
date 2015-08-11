@@ -1,0 +1,8 @@
+[_database]
+  host=localhost
+  name=social_network
+  user=root
+  password=
+  
+[_tables]
+  users=Users
