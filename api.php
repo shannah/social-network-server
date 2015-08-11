@@ -439,7 +439,7 @@ function get_post_photo_url($o) {
   if (!$o->photo) {
     return null;
   }
-  return df_absolute_url('uploads/'.sha1($o->username).'/'.rawurlencode(basename($o->photo.'.png')));
+  return df_absolute_url('uploads/'.sha1($o->username).'/'.rawurlencode(basename($o->photo)));
 }
 
 
